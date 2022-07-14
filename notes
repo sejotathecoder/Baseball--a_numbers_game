@@ -1,2 +1,4 @@
 # 1920 - 1948 was the era when the MLB designated the negro leagues as part of the league.
 # We need 3 databframes, preferablly from baseballreference
+# CAVIAT -- the data coming from the negro league statistics is independent of actual data from white players and should be viewed from this perspective.
+# We will be using baseball.r (R package) to assist us with visualizing baseball data and displaying statistics.
