@@ -11,7 +11,7 @@ Negro Leagues Baseball Museum co-founder Larry Lester told the New York Times th
 
 __What other examples of data driven projects have you found related to this domain (share at least 3)?__
   - We found a few articles that focus around the same topic though not much information on this specific field is readily available. Here are the three:
-  1. [What if Oscar Charleston is the best baseball player of all time, and why is it so important to find out?](https://www.espn.com/mlb/story/_/id/33194902/top-100-mlb-players-all-oscar-charleston-best-baseball-player-all-why-important-try-find-out)
+  1. [The Negro League Stars That MLB Kept Out — And Is Finally Recognizing](https://projects.fivethirtyeight.com/negro-leagues-mlb/) [(Github repository)](https://github.com/fivethirtyeight/negro-leagues-player-ratings)
   2. [Eric Chalek, “Leveling the Playing Field: Combining Negro Leagues Research and Sabermetric Analysis to Expand Our View of Negro Leagues Players”](https://youtu.be/6zU_b610-iE?t=217)
   3. [Only One Player Has Ever Been As Good As Shohei Ohtani](https://fivethirtyeight.com/features/long-before-shohei-ohtani-there-was-bullet-rogan/)
 
