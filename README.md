@@ -21,6 +21,7 @@ __What data-driven questions do you hope to answer about this domain (share at l
 3. In regards to the previous question, can we determine the state/quality of the Negro League fields based on the percentage of errors and other statistics that represent field malfunctions?
 
 __Finding Data__
+
 We are lucky enough to live in a time when there is lots of publicly available data made possible by governments, journalists, academics, and companies. In this section, you will identify and download at least 3 sources of data related to your domain of interest described above (into a folder you create called data/). You won't be required to use all of these sources, but it will give you practice discovering data. If your data is made available through a Web API, you don't need to download it. For each source of data, provide the following information:
 
  - Where did you download the data (e.g., a web URL)?
