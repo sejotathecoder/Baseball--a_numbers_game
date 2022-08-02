@@ -13,7 +13,7 @@ The data we are using is pulled from baseballreference. This site gets its data 
 
 #### A Comparison of Strength and Strategy
 
-Here we have a plot that shows a juxtaposition between OBS (on-base percentage) and SLG (slugging) between American Negro League teams and MLB AL teams portrayed on a graph. ![graph image](~/Documents/GitHub/1929battersOBPSLG.png)
+Here we have a plot that shows a juxtaposition between OBS (on-base percentage) and SLG (slugging) between American Negro League teams and MLB AL teams portrayed on a graph. ![graph image](~/Documents/GitHub/baseball--a_numbers_game/1929battersOBPSLG.png)
 You can see that
 
 #### A Summary
