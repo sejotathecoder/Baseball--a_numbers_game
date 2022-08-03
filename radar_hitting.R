@@ -8,7 +8,7 @@ library(plotly)
 library(ggplot2)
 library(fmsb)
 
-bat20to42 <- read.csv("~/Documents/Baseball--a_numbers_game/data/Batters1920to1942.csv", quote = "", stringsAsFactors = FALSE)
+bat20to42 <- read.csv("~/Documents/Baseball--a_numbers_game/data/NegroLeagueBatters1920to1948.csv", quote = "", stringsAsFactors = FALSE)
 
 PA <- PA %>% Batters1920to1942$PA > 100
 
