@@ -40,9 +40,9 @@ One of the greatest baseball managers of all time, Earl Weaver of the Baltimore 
 
 $OBP = \frac{H+BB+HBP}{AB+BB+HBP+SF}$
 
-OBP was made famous by Michael Lewis's 2003 book Moneyball (later adapted into a movie), which chronicled the 2002 Oakland Athletics and their data-driven quest to build a competitive roster with a much lower payroll than other MLB teams. In a [memorable scene from the movie](https://www.youtube.com/watch?v=PlKDQqKh03Y), Brad Pitt, playing general manager Billy Beane, describes why he pursues certain players to the older scouts who don't understand.
+OBP was made famous by Michael Lewis's 2003 book Moneyball (later adapted into a movie), which chronicled the 2002 Oakland Athletics and their data-driven quest to build a competitive roster with a much lower payroll than other MLB teams. In a [memorable scene from the movie](https://www.youtube.com/watch?v=PlKDQqKh03Y), Brad Pitt, playing general manager Billy Beane, describes why he pursues certain players to the older, less data-driven scouts who don't understand. Over their objections to superficial factors like weight or off-field issues, Beane simply states, "He gets on-base."
 
-Here is an interactive visual of OBP on the X-axis and slugging percentage (SLG) on the Y-axis for Negro Leaguers from 1920 to 1948 with at least 100 plate appearances.
+Here is an interactive visual of OBP on the X-axis and slugging percentage (SLG) (essentially a measure of power) on the Y-axis for Negro Leaguers from 1920 to 1948 with at least 100 plate appearances.
 
 ```{r echo = FALSE}
 all_1920_48_qb <- read.csv("data/NegroLeagueBatters1920to1948.csv")
@@ -55,4 +55,4 @@ all_ops_plotly_2048 <- ggplotly(all_ops_plot_2048)
 all_ops_plotly_2048
 ```
 
-#### A Summary
+#### Radar Charts
