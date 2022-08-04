@@ -36,9 +36,9 @@ pitcher_summary
 
 #### "He gets on-base."
 
+From a baseball
 
-
-Here is an interactive visual of on-base percentage (OBP) on the X-axis and slugging percentage (SLG) on the Y-axis for Negro Leaguers from 1920 to 1948 with at least 100 plate appearances.
+Here is an interactive visual of OBP on the X-axis and slugging percentage (SLG) on the Y-axis for Negro Leaguers from 1920 to 1948 with at least 100 plate appearances.
 
 ```{r echo = FALSE}
 all_1920_48_qb <- read.csv("data/NegroLeagueBatters1920to1948.csv")
