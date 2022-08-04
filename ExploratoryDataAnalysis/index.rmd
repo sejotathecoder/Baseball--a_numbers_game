@@ -17,9 +17,15 @@ library(RColorBrewer)
 
 The data we are using is from Baseball Reference, though it was compiled by Seamheads from newspapers and other primary sources of the time. It is important to note that the data set is not complete by any means, as box scores and record keeping were not as comprehensive in the Negro Leagues as they were for the American and National Leagues. In addition, the Negro Leagues played many exhibition, barnstorming, and other types of games that are not included in the data set. 
 
-Our data includes all Negro League pitchers and position players from 1920 to 1948 (the period they have been designated major leagues by MLB) in the Baseball Reference database, with the aforementioned caveats.
+Our data includes all Negro League pitchers and position players from 1920 to 1948 (the period they have been designated major leagues by MLB) in the Baseball Reference database, with the aforementioned caveats. Our data set includes all hitters with at least 100 plate appearances (PA), and all pitchers who appeared in at least 10 games.
 
-#### Broad overview
+#### Summary information
+
+
+
+#### "He gets on-base."
+
+
 
 Here is an interactive visual of on-base percentage (OBP) on the X-axis and slugging percentage (SLG) on the Y-axis for Negro Leaguers from 1920 to 1948 with at least 100 plate appearances.
 
