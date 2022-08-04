@@ -19,9 +19,20 @@ The data we are using is from Baseball Reference, though it was compiled by Seam
 
 Our data includes all Negro League pitchers and position players from 1920 to 1948 (the period they have been designated major leagues by MLB) in the Baseball Reference database, with the aforementioned caveats. Our data set includes all hitters with at least 100 plate appearances (PA), and all pitchers who appeared in at least 10 games. The data set only includes the career stats each player put up while in the Negro Leagues (for instance, Jackie Robinson's statistics with the Dodgers are not included in the set).
 
-#### Summary information
+#### Summary Information
 
+The median number of plate appearances in our dataset was 374, with the mean being 672.2. The median and mean on-base percentage plus slugging percentage (OPS) was .655 (more on this statistic later). For pitchers, the median earned run average (ERA) was 4.50, with the mean ERA being 4.74. The median fielding independent pitching (FIP) was 2.80, with the mean FIP being 2.77.
 
+```{r echo = FALSE}
+all_1920_48_qb <- read.csv("data/NegroLeagueBatters1920to1948.csv")
+all_1920_48_qp <- read.csv("data/NegroLeaguePitchers1920to1948.csv")
+
+bat_summary <- summary(all_1920_48_qb)
+pitcher_summary <- summary(all_1920_48_qp)
+
+bat_summary
+pitcher_summary
+```
 
 #### "He gets on-base."
 
