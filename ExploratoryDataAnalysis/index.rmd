@@ -12,7 +12,6 @@ library(tidyverse)
 library(plotly)
 library(RColorBrewer)
 library(fmsb)
-library(htmltools)
 ```
 
 #### Our Data
@@ -46,9 +45,12 @@ pitcher_summary$mean_era <- mean(all_1920_48_qp$ERA)
 pitcher_summary$median_era <- median(all_1920_48_qp$ERA)
 pitcher_summary$mean_fip <- mean(na.omit(all_1920_48_qp$FIP))
 pitcher_summary$median_fip <- median(na.omit(all_1920_48_qp$FIP))
+```
 
-tagList(bat_summary)
-tagList(pitcher_summary)
+#### Aggregate Data
+
+```{r echo = FALSE}
+
 ```
 
 #### "He gets on-base."
