@@ -5,7 +5,7 @@ date: '2022-08-04'
 output: html_document
 ---
 
-*This exploratory analysis of America's favorite past-time takes an in-depth look at the history of Negro League play and the statistics they generated.*
+*This exploratory analysis of America's favorite pastime takes an in-depth look at the history of Negro League play and the statistics they generated.*
 
 ```{r include = FALSE}
 library(tidyverse)
