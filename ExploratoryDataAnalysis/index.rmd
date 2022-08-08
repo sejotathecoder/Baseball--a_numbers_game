@@ -12,6 +12,7 @@ library(tidyverse)
 library(plotly)
 library(RColorBrewer)
 library(fmsb)
+library(htmltools)
 ```
 
 #### Our Data
@@ -25,14 +26,29 @@ Our data includes all Negro League pitchers and position players from 1920 to 19
 The median number of plate appearances in our dataset was 374, with the mean being 672.2. The median and mean on-base percentage plus slugging percentage (OPS) was .655 (more on this statistic later). For pitchers, the median earned run average (ERA) was 4.50, with the mean ERA being 4.74. The median fielding independent pitching (FIP) was 2.80, with the mean FIP being 2.77.
 
 ```{r echo = FALSE}
+library(tidyverse)
+
 all_1920_48_qb <- read.csv("data/NegroLeagueBatters1920to1948.csv")
 all_1920_48_qp <- read.csv("data/NegroLeaguePitchers1920to1948.csv")
 
-bat_summary <- summary(all_1920_48_qb)
-pitcher_summary <- summary(all_1920_48_qp)
+bat_summary <- list()
 
-bat_summary
-pitcher_summary
+bat_summary$num_observations <- nrow(all_1920_48_qb)
+bat_summary$mean_pa <- mean(all_1920_48_qb$PA)
+bat_summary$median_pa <- median(all_1920_48_qb$PA)
+bat_summary$mean_ops <- mean(all_1920_48_qb$OPS)
+bat_summary$median_ops <- median(all_1920_48_qb$OPS)
+
+pitcher_summary <- list()
+
+pitcher_summary$num_observations <- nrow(all_1920_48_qp)
+pitcher_summary$mean_era <- mean(all_1920_48_qp$ERA)
+pitcher_summary$median_era <- median(all_1920_48_qp$ERA)
+pitcher_summary$mean_fip <- mean(na.omit(all_1920_48_qp$FIP))
+pitcher_summary$median_fip <- median(na.omit(all_1920_48_qp$FIP))
+
+tagList(bat_summary)
+tagList(pitcher_summary)
 ```
 
 #### "He gets on-base."
