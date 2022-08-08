@@ -11,21 +11,12 @@ output: html_document
 library(tidyverse)
 library(plotly)
 library(RColorBrewer)
-<<<<<<< HEAD
-library(stringr)
-library(shiny)
-library(dplyr)
-library(baseballr)
-library(stringr)
-library(ggplot2)
-=======
->>>>>>> 648151f55ee4446ce860aa584b89747dbe0545f4
 library(fmsb)
 ```
 
 #### Our Data
 
-The data we are using is from Baseball Reference, though it was compiled by Seamheads from newspapers and other primary sources of the time. It is important to note that the data set is not complete by any means, as box scores and record keeping were not as comprehensive in the Negro Leagues as they were for the American and National Leagues. In addition, the Negro Leagues played many exhibition, barnstorming, and other types of games that are not included in the data set. 
+The data we are using is from Baseball Reference, though it was compiled by Seamheads from newspapers and other primary sources of the time. It is important to note that the data set is not complete by any means, as box scores and record keeping were not as comprehensive in the Negro Leagues as they were for the American and National Leagues. In addition, the Negro Leagues played many exhibition, barnstorming, and other types of games that are not included in the data set. For this reason, our analysis leans toward per-game or per-plate appearance stats more than total numbers.
 
 Our data includes all Negro League pitchers and position players from 1920 to 1948 (the period they have been designated major leagues by MLB) in the Baseball Reference database, with the aforementioned caveats. Our data set includes all hitters with at least 100 plate appearances (PA), and all pitchers who appeared in at least 10 games. The data set only includes the career stats each player put up while in the Negro Leagues (for instance, Jackie Robinson's statistics with the Dodgers are not included in the set).
 
@@ -65,28 +56,11 @@ all_ops_plotly_2048 <- ggplotly(all_ops_plot_2048)
 all_ops_plotly_2048
 ```
 
-#### Home Run Leaderboard
-
-```{r echo = FALSE}
-nlbat20to48 <- read_csv("data/NegroLeagueBatters1920to1948.csv")
-
-hr <- nlbat20to48[,c(1,2,16)]
-hr <- filter(hr, HR > 70)
-
-hr_leaderboard <- ggplot(hr, aes(x = reorder(Player, HR), y = HR)) + geom_bar(stat = "identity", width = 0.5, color = "cadetblue", 
-    fill = "chocolate1") + theme_gray() + coord_flip() + labs(y = "Home Runs", x = "Players")
-hr_leaderboard
-```
-
 #### Radar Charts
 
-<<<<<<< HEAD
-We created two different radar charts to outline a players offensive and defensive capabilities. The first radar chart is comprised of multiple offensive statistics, showing how many singles, doubles, triples, and home runs they had matched to a league average.
+We created two different radar charts to outline a players offensive and defensive capabilities. The first radar chart is comprised of multiple offensive statistics, showing how many singles, doubles, triples, and home runs a player hit per plate appearance (PA) compared to a league average hitter. The players we have chosen to look at for the charts are the Hall of Fame pitcher Satchel Paige, and the Hall of Fame batter Josh Gibson.
 
 ```{r echo = FALSE}
-bat20to42 <- read.csv("~/Documents/Baseball--a_numbers_game/data/NegroLeagueBatters1920to1948.csv", quote = "", stringsAsFactors = FALSE)
-=======
-``` {r echo = FALSE}
 negro_league_1920_48_pitching <- read.csv("data/NegroLeaguePitchers1920to1948.csv")
 pitching_tri <- negro_league_1920_48_pitching[,c(2, 34, 35, 36)]
 
@@ -108,9 +82,12 @@ radarchart(pitching_tri_2[c("Max", "Min", "Average", 11), ],
 
 ```
 
+This radar chart shows a pitcher's strikeouts per nine innings pitched (K/9), walks per nine innings pitched (BB/9), and home runs allowed per nine innings pitched (HR/9). These are considered the stats a pitcher has the most control over (i.e. stats that are not dependent on the fielders behind him), so they are useful in analyzing a pitcher. It is better for a pitcher to have a higher K/9 and a lower BB/9 and HR/9.
+
+The gray triangle indicates the stats of an average Negro League pitcher, and the red triangle indicates the stats of Satchel Paige. As the chart makes clear, Satchel Paige was much more impressive in all three categories compared to league average.
+
 ``` {r echo = FALSE}
 bat20to42 <- read.csv("data/NegroLeagueBatters1920to1948.csv", quote = "", stringsAsFactors = FALSE)
->>>>>>> 648151f55ee4446ce860aa584b89747dbe0545f4
 
 bat20to42 <- bat20to42 %>% mutate(singles = X1B / PA)
 bat20to42 <- bat20to42 %>% mutate(doubles = X2B / PA)
@@ -137,49 +114,25 @@ radarchart(alt_bat20to42[c("Max", "Min", "Average", 1), ],
            pcol = c(NA, 4), plty = 1,
            plwd = 2,
            title = "Josh Gibson")
-<<<<<<< HEAD
 ```
 
-The radar chart above is shaped in a diamond, like a baseball field, to visualize these statistics a bit easier. Josh Gibson was a catcher for the Negro Leagues who is considered to be one of the baseballs most powerful hitters of all time; he was also the second negro leaguer to be inducted into the National Baseball Hall of Fame. This specific radar chart is an overview of his offensive prowess and hitting capability. The smaller gray diamond, pointing towards 'singles', is the negro league average for hitting. As you can see, Josh Gibson would hit a lot more home runs on average than other players in the negro leagues. This chart allows the average reader to clearly visualize the baseball diamond and understand what this chart menas in regards to data visualization. 
-
-```{r echo = FALSE}
-negro_league_1920_48_pitching <- read.csv("data/NegroLeaguePitchers1920to1948.csv")
-pitching_tri <- negro_league_1920_48_pitching[,c(2, 34, 35, 36)]
-
-avg <- data.frame(Player = c("Average"), HR9 = c(mean(na.omit(pitching_tri$HR9))), BB9 = c(mean(pitching_tri$BB9)), SO9 = c(mean(pitching_tri$SO9)))
-rownames(avg) <- c("Average")
-
-pitching_tri <- rbind(avg, pitching_tri)
-
-max_min <- data.frame(Player = c("Max", "Min"), HR9 = c(1.4, 0), BB9 = c(10.1, 1.1), SO9 = c(10.1, 1.3))
-rownames(max_min) <- c("Max", "Min")
-
-pitching_tri <- rbind(max_min, pitching_tri)
-pitching_tri_2 <- pitching_tri[,-1]
-
-radarchart(pitching_tri_2[c("Max", "Min", "Average", 11), ],
-           pfcol = c("#99999980",NA),
-           pcol= c(NA,2), plty = 1, plwd = 2,
-           title = "Satchel Paige")
-```
-
-( INCLUDE A PARAGRAPH OF EXPLANATION HERE FOR GRAPH ABOVE )
+The radar chart above is shaped in a diamond, like a baseball field, to visualize these statistics a bit easier. Josh Gibson was a catcher for the Negro Leagues who is considered to be one of baseball's most powerful hitters of all time; he was also the second Negro Leaguer to be inducted into the National Baseball Hall of Fame. This specific radar chart is an overview of his offensive prowess and hitting capability. The smaller gray diamond, pointing towards 'singles', is the average Negro Leaguer's statistics in these areas. As you can see, Josh Gibson would hit a lot more home runs on average than other players in the Negro Leagues. This chart allows the average reader to clearly visualize the baseball diamond and understand what this chart means in regards to data visualization. 
 
 #### Bar Chart
 
-```{r echo = FALSE}
-nlbat20to48 <- read_csv("/Users/cjpiccio/Documents/Baseball--a_numbers_game/ExploratoryDataAnalysis/data/NegroLeagueBatters1920to1948.csv")
+```{r include = FALSE}
+nlbat20to48 <- read_csv("data/NegroLeagueBatters1920to1948.csv")
 
 hr <- nlbat20to48[,c(1,2,16)]
 hr <- filter(hr, HR > 70)
 
 hr_leaderboard <- ggplot(hr, aes(x = reorder(Player, HR), y = HR)) + geom_bar(stat = "identity", width = 0.5, color = "cadetblue", 
     fill = "chocolate1") + theme_gray() + coord_flip() + labs(y = "Home Runs", x = "Players")
+```
+
+```{r echo = FALSE}
 hr_leaderboard
 ```
 
-Finally, we created a bar chart to summarize our data that simply shows total number of home runs for negro league players from
-1920 - 1948. This bar chart is filtered to players that have hit over 70 home runs in their career so the data would be view able since their were very many players with home runs. This bar chart was organized so that the player with the most home runs was at the top and designed such that the bar colors would be appealing for the reader.
-=======
-```
->>>>>>> 648151f55ee4446ce860aa584b89747dbe0545f4
+Finally, we created a bar chart to summarize our data that simply shows total number of home runs for Negro League players from
+1920 - 1948. This bar chart is filtered to players that have hit over 70 home runs in their career so the data would be viewable, as many players hit at least some home runs during their career. This bar chart was organized so that the player with the most home runs was at the top and designed such that the bar colors would be appealing for the reader.
