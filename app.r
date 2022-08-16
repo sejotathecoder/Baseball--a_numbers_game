@@ -4,9 +4,14 @@ library(fmsb)
 library(shiny)
 
 # Bringing hitting statistics in
-#processed_bats <- read.csv("data/processed_bats.csv")
-#just_batters <- processed_bats[4:867,]
-#bat_list <- setNames(as.numeric(just_batters$X), just_batters$Player)
+hitting <- readRDS("data/hitting.rds")
+hitting[549, 1] = "Bobby Robinson*"
+hitting[409, 1] = "Frank Duncan*"
+hitting[823, 1] = "Jack Marshall*"
+hitting[774, 1] = "Willie Wells*"
+hitting_2 <- hitting[, -1]
+rownames(hitting_2) <- hitting[, 1]
+bat_list <- filter(hitting, Player != "Max" & Player != "Min" & Player != "Average")
 
 # including pitching stats
 pitching <- readRDS("data/pitching.rds")
@@ -25,7 +30,15 @@ home_page <- tabPanel("Home Plate",
 )
 
 hitting_radar_page <- tabPanel("Hitting Radar Charts",
-
+  sidebarLayout(
+    sidebarPanel(selectInput("hitter_select", label = h3("Select a hitter"),
+                              choices = bat_list)
+    ),
+                                 
+    mainPanel(
+      plotOutput(outputId = "hitting_plot")
+    )
+  )
 )
 
 pitching_radar_page <- tabPanel("Pitching Radar Charts",
@@ -53,11 +66,20 @@ ui <- navbarPage("Visualizing the Negro Leagues",
 )
   
 server <- function(input, output){
+  output$hitting_plot <- renderPlot({
+    radarchart(hitting_2[c("Max", "Min", "Average", input$hitter_select), ],
+               pfcol = c("#99999980", NA),
+               pcol = c(NA, 4), plty = 1,
+               plwd = 2,
+               title = input$hitter_select)
+  })
+  
   output$pitching_plot <- renderPlot({
     radarchart(pitching_2[c("Max", "Min", "Average", input$pitchers), ],
              pfcol = c("#99999980",NA),
              pcol= c(NA,2), plty = 1, plwd = 2,
              title = input$pitchers)
-})}
+  })
+}
   
 shinyApp(ui = ui, server = server)
