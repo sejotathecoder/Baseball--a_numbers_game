@@ -19,7 +19,9 @@ hitting_radar_page <- tabPanel("Hitting Radar Charts",
       selectInput("hitter_select", label = h3("Select a hitter"),
                   choices = bat_list)
     )
-  )
+  ),
+  
+  mainPanel()
 )
 
 pitching_radar_page <- tabPanel("Pitching Radar Charts",
