@@ -8,7 +8,7 @@ library(plotly)
 library(ggplot2)
 library(fmsb)
 
-bat20to42 <- read.csv("~/Documents/Baseball--a_numbers_game/data/NegroLeagueBatters1920to1948.csv", quote = "", stringsAsFactors = FALSE)
+bat20to42 <- read.csv("data/NegroLeagueBatters1920to1948.csv", quote = "", stringsAsFactors = FALSE)
 
 bat20to42 <- bat20to42 %>% mutate(singles = X1B / PA)
 bat20to42 <- bat20to42 %>% mutate(doubles = X2B / PA)
@@ -23,7 +23,7 @@ rownames(avg) = c("Average")
 new_bat20to42 <- rbind(avg, new_bat20to42)
 
 max_min <- data.frame(
-  Player = c("Max", "Min"), doubles = c(0.1092437, 0), triples = c(0.04854369, 0), home_runs = c(0.06571087, 0),  singles = c(0.2807018, 0)
+  Player = c("Max", "Min"), doubles = c(0.25, 0), triples = c(0.25, 0), home_runs = c(0.25, 0),  singles = c(0.25, 0)
 )
 
 rownames(max_min) <- c("Max", "Min")
