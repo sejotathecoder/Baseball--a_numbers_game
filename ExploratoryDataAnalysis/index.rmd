@@ -5,13 +5,14 @@ date: '2022-08-04'
 output: html_document
 ---
 
-*This exploratory analysis of America's favorite past-time takes an in-depth look at the history of Negro League play and the statistics they generated.*
+*This exploratory analysis of America's favorite pastime takes an in-depth look at the history of Negro League play and the statistics they generated.*
 
 ```{r include = FALSE}
 library(tidyverse)
 library(plotly)
 library(RColorBrewer)
 library(fmsb)
+library(knitr)
 ```
 
 #### Our Data
@@ -22,11 +23,9 @@ Our data includes all Negro League pitchers and position players from 1920 to 19
 
 #### Summary Information
 
-The median number of plate appearances in our dataset was 374, with the mean being 672.2. The median and mean on-base percentage plus slugging percentage (OPS) was .655 (more on this statistic later). For pitchers, the median earned run average (ERA) was 4.50, with the mean ERA being 4.74. The median fielding independent pitching (FIP) was 2.80, with the mean FIP being 2.77.
+The median number of career plate appearances in our dataset was 374, with the mean being 672.2. The median and mean career on-base percentage plus slugging percentage (OPS) was .655 (more on this statistic later). For pitchers, the median career earned run average (ERA) was 4.50, with the mean ERA being 4.74. The median career fielding independent pitching (FIP) was 2.80, with the mean FIP being 2.77.
 
 ```{r echo = FALSE}
-library(tidyverse)
-
 all_1920_48_qb <- read.csv("data/NegroLeagueBatters1920to1948.csv")
 all_1920_48_qp <- read.csv("data/NegroLeaguePitchers1920to1948.csv")
 
@@ -49,9 +48,21 @@ pitcher_summary$median_fip <- median(na.omit(all_1920_48_qp$FIP))
 
 #### Aggregate Data
 
+
 ```{r echo = FALSE}
 library(tidyverse)
+all_1920_48_qb <- read.csv("data/NegroLeagueBatters1920to1948.csv")
+all_1920_48_qp <- read.csv("data/NegroLeaguePitchers1920to1948.csv")
+all_1920_48_qb$over1000pa <- ifelse(all_1920_48_qb$PA > 1000, "over 1000 PA", "under 1000 PA")
+all_1920_48_qp$over100g <- ifelse(all_1920_48_qp$G > 100, "over 100 G", "under 100 G")
+bat_agg_df <- all_1920_48_qb %>% group_by(over1000pa) %>% summarise_at(vars(OPS),funs(mean(.,na.rm=TRUE)))
+pitch_agg_df <- all_1920_48_qp %>% group_by(over100g) %>% summarise_at(vars(ERA),funs(mean(.,na.rm=TRUE)))
 
+
+```
+It may seem tautological, but batters who received more plate appearances and pitchers who pitched more games were better players than those with less. You can see this in the tables below, as career ERA and OPS were better for players with more plate appearances and games pitched, despite the fact that these statistics include late-career declines for some players.
+
+```{r include = FALSE}
 all_1920_48_qb <- read.csv("data/NegroLeagueBatters1920to1948.csv")
 all_1920_48_qp <- read.csv("data/NegroLeaguePitchers1920to1948.csv")
 
@@ -60,6 +71,11 @@ all_1920_48_qp$over100g <- ifelse(all_1920_48_qp$G > 100, "over 100 G", "under 1
 
 bat_agg_df <- all_1920_48_qb %>% group_by(over1000pa) %>% summarise_at(vars(OPS),funs(mean(.,na.rm=TRUE)))
 pitch_agg_df <- all_1920_48_qp %>% group_by(over100g) %>% summarise_at(vars(ERA),funs(mean(.,na.rm=TRUE)))
+```
+
+``` {r echo = FALSE}
+kable(bat_agg_df, digits = 3)
+kable(pitch_agg_df, digits = 2)
 ```
 
 #### "He gets on-base."
@@ -129,7 +145,7 @@ rownames(avg) = c("Average")
 new_bat20to42 <- rbind(avg, new_bat20to42)
 
 max_min <- data.frame(
-  Player = c("Max", "Min"), doubles = c(0.1092437, 0), triples = c(0.04854369, 0), home_runs = c(0.06571087, 0),  singles = c(0.2807018, 0)
+  Player = c("Max", "Min"), doubles = c(0.25, 0), triples = c(0.25, 0), home_runs = c(0.25, 0),  singles = c(0.25, 0)
 )
 
 rownames(max_min) <- c("Max", "Min")
