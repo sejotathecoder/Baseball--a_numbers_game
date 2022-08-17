@@ -55,10 +55,10 @@ hitting_radar_page <- tabPanel("Hitting Radar Charts",
     mainPanel(
       plotOutput(outputId = "hitting_plot"),
       hit_summary <- print("This radar chart is pretty straightforward. There are 4 variables shown,
-                           each calculated with the raw statistic being divided by plate appearances
-                           (completed at bats - regardeless of outcome). The variables represent the average number of
-                           singles, doubles, triples, and home runs the selected hitter achieved in their career.
-                           The gray area, behind the blue-lined shape, symbolizes the Negro League average of each calculated stat."),
+                           each calculated with the raw statistic being divided by plate appearances. The variables 
+                           represent the singles, doubles, triples, and home runs per plate appearance the selected 
+                           hitter achieved in their career. The gray area, behind the blue-lined shape, symbolizes 
+                           the Negro League average of each calculated stat."),
       verbatimTextOutput(outputId = "hit_summary")
     )
   )
