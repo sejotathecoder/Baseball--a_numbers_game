@@ -53,16 +53,28 @@ hitting_radar_page <- tabPanel("Hitting Radar Charts",
                                                           choices = bat_list)
                                  ),
                                  
+<<<<<<< HEAD
                                  mainPanel(
                                    plotOutput(outputId = "hitting_plot"),
                                    hit_summary <- print("This radar chart is pretty straightforward. There are 4 variables shown,
+=======
+    mainPanel(
+      plotOutput(outputId = "hitting_plot"),
+      hit_summary <- print("This radar chart is pretty straightforward. There are 4 variables shown,
+>>>>>>> 42258c8ec41f3f3030bcc7b7952feff9f03f24c8
                            each calculated with the raw statistic being divided by plate appearances. The variables 
                            represent the singles, doubles, triples, and home runs per plate appearance the selected 
                            hitter achieved in their career. The gray area, behind the blue-lined shape, symbolizes 
                            the Negro League average of each calculated stat."),
+<<<<<<< HEAD
                                    verbatimTextOutput(outputId = "hit_summary")
                                  )
                                )
+=======
+      verbatimTextOutput(outputId = "hit_summary")
+    )
+  )
+>>>>>>> 42258c8ec41f3f3030bcc7b7952feff9f03f24c8
 )
 
 pitching_radar_page <- tabPanel("Pitching Radar Charts",
