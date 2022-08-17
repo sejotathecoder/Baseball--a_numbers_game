@@ -24,9 +24,24 @@ just_pitching <- filter(pitching, Player != "Max" & Player != "Min" & Player != 
 home_page <- tabPanel("Home Plate",
                       mainPanel(
                         h1("Can we visualize Negro League statistics for the everyday reader?"),
-                        imageOutput("jackie"),
+                        img(src = "jackie.png"),
                         ### the rest of your code
                       ),
+                      data_summary <- print("The data we are using is from Baseball Reference, though it was compiled by Seamheads from
+                      newspapers and other primary sources of the time. It is important to note that the data set is not complete by any
+                      means, as box scores and record keeping were not as comprehensive in the Negro Leagues as they were for the
+                      American and National Leagues. In addition, the Negro Leagues played many exhibition, barnstorming, and other
+                      types of games that are not included in the data set. For this reason, our analysis leans toward per-game or
+                      per-plate appearance stats more than total numbers.
+                                            
+                      Our data includes all Negro League pitchers and position players from 1920 to 1948
+                                            (the period they have been designated major leagues by MLB) in the Baseball 
+                                            Reference database, with the aforementioned caveats. Our data set includes 
+                                            all hitters with at least 100 plate appearances (PA), and all pitchers who 
+                                            appeared in at least 10 games. The data set only includes the career stats 
+                                            each player put up while in the Negro Leagues (for instance, Jackie Robinson's 
+                                            statistics with the Dodgers are not included in the set)."),
+                      verbatimTextOutput(outputId = "hit_summary")
 )
 
 hitting_radar_page <- tabPanel("Hitting Radar Charts",
