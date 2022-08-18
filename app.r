@@ -98,11 +98,13 @@ leaderboard_page <- tabPanel("Leaderboards",
                              mainPanel(
                                plotOutput(outputId = "hr_summary"),
                                br(),
-                               hr_summary <- print("The horizontal bar chart above shows 10 players")
+                               hr_summary <- print("The horizontal bar chart above shows the Negro Leaguers with the most home runs.
+                                                   This bar chart is filtered to players that have hit over 70 home runs in their
+                                                   career so the data would be viewable, as many players hit at least some home runs
+                                                   during their career. This bar chart was organized so that the player with the most
+                                                   home runs was at the top and designed such that the bar colors would be appealing
+                                                   for the reader.")
                              )
-
-                             
-                        
 )
 
 ui <- navbarPage("Visualizing the Negro Leagues",
