@@ -32,7 +32,7 @@ hr <- filter(hr, HR > 70)
 home_page <- tabPanel("Home Plate",
                       mainPanel(
                         h1("Can we visualize Negro League statistics for the everyday reader?"),
-                        img(src = "http://chapelboromedia.s3.amazonaws.com/uploads/2014/08/robinson-300x204.jpg"), align = "center",
+                        img(src = "jackie.png"), align = "center",
                         br(),
                         data_summary_one <- print("The data we are using is from Baseball Reference, though it was compiled by Seamheads from
                       newspapers and other primary sources of the time. It is important to note that the data set is not complete by any
