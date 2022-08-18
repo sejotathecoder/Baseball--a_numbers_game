@@ -65,7 +65,8 @@ home_page <- tabPanel("Home Plate",
                       verbatimTextOutput(outputId = "data_summary_two"),
                       br(),
                       verbatimTextOutput(outputId = "summary"),
-                      br(),
+                      br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(),
+                      br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(),
                       plotlyOutput(outputId = "obp_slg_chart"),
 )
 
