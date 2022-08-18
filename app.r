@@ -53,10 +53,18 @@ home_page <- tabPanel("Home Plate",
                       appeared in at least 10 games. The data set only includes the career stats 
                       each player put up while in the Negro Leagues (for instance, Jackie Robinson's 
                       statistics with the Dodgers are not included in the set)."),
+                        
+                        br(),
+                        
+                        summary <- print("This project is an attempt to highlight the Negro League players, giving them the appreciation
+                                         they deserve based on their extraordinary careers.")
                       ),
                       
                       verbatimTextOutput(outputId = "data_summary_one"),
+                      br(),
                       verbatimTextOutput(outputId = "data_summary_two"),
+                      br(),
+                      verbatimTextOutput(outputId = "summary"),
                       br(),
                       plotlyOutput(outputId = "obp_slg_chart"),
 )
