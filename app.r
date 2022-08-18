@@ -41,6 +41,8 @@ home_page <- tabPanel("Home Plate",
                       types of games that are not included in the data set. For this reason, our analysis leans toward per-game or
                       per-plate appearance stats more than total numbers."),
                         
+                        br(),
+                        
                         data_summary_two <- print("Our data includes all Negro League pitchers and position players from 1920 to 1948
                       (the period they have been designated major leagues by MLB) in the Baseball 
                       Reference database, with the aforementioned caveats. Our data set includes 
@@ -108,7 +110,6 @@ leaderboard_page <- tabPanel("Leaderboards",
 )
 
 ui <- navbarPage("Visualizing the Negro Leagues",
-                 #theme = bs_theme(version = 4, bootswatch = "minty"),
                  setBackgroundImage(
                    src = "hinchliffe.jpg"
                  ),
