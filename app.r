@@ -25,9 +25,12 @@ just_pitching <- filter(pitching, Player != "Max" & Player != "Min" & Player != 
 
 # Including hr_leaderboard statistics
 nlbat20to48 <- read_csv("data/NegroLeagueBatters1920to1948.csv")
-
 hr <- nlbat20to48[,c(1,2,16)]
 hr <- filter(hr, HR > 70)
+
+# Including on-base percentage / slugging interactive visualization data set & filter
+all_1920_48_qb <- read.csv("data/NegroLeagueBatters1920to1948.csv")
+all_1920_48_qb <- arrange(all_1920_48_qb, PA)
 
 home_page <- tabPanel("Home Plate",
                       mainPanel(
@@ -54,6 +57,8 @@ home_page <- tabPanel("Home Plate",
                       
                       verbatimTextOutput(outputId = "data_summary_one"),
                       verbatimTextOutput(outputId = "data_summary_two"),
+                      br(),
+                      plotlyOutput(outputId = "obp_slg_chart"),
 )
 
 hitting_radar_page <- tabPanel("Hitting Radar Charts",
@@ -120,6 +125,14 @@ ui <- navbarPage("Visualizing the Negro Leagues",
 )
 
 server <- function(input, output){
+  
+  output$obp_slg_chart <- renderPlotly({
+    all_ops_plot_2048 <- ggplot(data = all_1920_48_qb, aes(OBP, SLG, col = PA, label = Player)) + 
+      geom_point(aes(size = PA)) + labs(x = "On-base percentage", y = "Slugging percentage", 
+                                        title = "1920 to 1948 Negro League batters, > 100 PA") 
+    all_ops_plotly_2048 <- ggplotly(all_ops_plot_2048)
+    all_ops_plotly_2048
+  })
   
   output$hr_summary <- renderPlot({
     ggplot(hr, aes(x = reorder(Player, HR), y = HR)) + geom_bar(stat = "identity", width = 0.5, color = "cadetblue", 
