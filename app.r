@@ -123,6 +123,9 @@ leaderboard_page <- tabPanel("Leaderboards",
 )
 
 ui <- navbarPage("Visualizing the Negro Leagues",
+                 tags$head(
+                   tags$link(rel = "stylesheet", type = "text/css", href = "project-style.css")
+                 ),
                  setBackgroundImage(
                    src = "hinchliffe.jpg"
                  ),
