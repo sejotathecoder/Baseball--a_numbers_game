@@ -2,7 +2,7 @@ library(tidyverse)
 library(plotly)
 library(fmsb)
 library(shiny)
-
+library(shinyWidgets)
 
 
 # Bringing hitting statistics in
@@ -107,6 +107,9 @@ leaderboard_page <- tabPanel("Leaderboards",
 
 ui <- navbarPage("Visualizing the Negro Leagues",
                  #theme = bs_theme(version = 4, bootswatch = "minty"),
+                 setBackgroundImage(
+                   src = "hinchliffe.jpg"
+                 ),
                  home_page,
                  hitting_radar_page,
                  pitching_radar_page,
