@@ -3,6 +3,8 @@ library(plotly)
 library(fmsb)
 library(shiny)
 
+
+
 # Bringing hitting statistics in
 hitting <- readRDS("data/hitting.rds")
 hitting[549, 1] = "Bobby Robinson*"
@@ -20,6 +22,12 @@ pitching[330, 1] = "Tommy Johnson*"
 pitching_2 <- pitching[, -1]
 rownames(pitching_2) <- pitching[, 1]
 just_pitching <- filter(pitching, Player != "Max" & Player != "Min" & Player != "Average")
+
+# Including hr_leaderboard statistics
+nlbat20to48 <- read_csv("data/NegroLeagueBatters1920to1948.csv")
+
+hr <- nlbat20to48[,c(1,2,16)]
+hr <- filter(hr, HR > 70)
 
 home_page <- tabPanel("Home Plate",
                       mainPanel(
@@ -86,10 +94,19 @@ pitching_radar_page <- tabPanel("Pitching Radar Charts",
 )
 
 leaderboard_page <- tabPanel("Leaderboards",
+                             titlePanel("An overview of the datasets through player ranking"),
+                             mainPanel(
+                               plotOutput(outputId = "hr_summary"),
+                               br(),
+                               hr_summary <- print("The horizontal bar chart above shows 10 players")
+                             )
+
                              
+                        
 )
 
 ui <- navbarPage("Visualizing the Negro Leagues",
+                 #theme = bs_theme(version = 4, bootswatch = "minty"),
                  home_page,
                  hitting_radar_page,
                  pitching_radar_page,
@@ -98,6 +115,11 @@ ui <- navbarPage("Visualizing the Negro Leagues",
 
 server <- function(input, output){
   
+  output$hr_summary <- renderPlot({
+    ggplot(hr, aes(x = reorder(Player, HR), y = HR)) + geom_bar(stat = "identity", width = 0.5, color = "cadetblue", 
+                                                                                  fill = "chocolate1") + theme_gray() + 
+      coord_flip() + labs(y = "Home Runs", x = "Players")
+  })
   
   output$hitting_plot <- renderPlot({
     radarchart(hitting_2[c("Max", "Min", "Average", input$hitter_select), ],
