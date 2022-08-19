@@ -84,8 +84,8 @@ leaderboard_page <- tabPanel("Leaderboards",
                              sidebarLayout(
                                sidebarPanel(
                                  selectInput("select_stat", label = h3("Choose a statistic to graph!"), 
-                                             choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3), 
-                                             selected = 1),
+                                             choices = list(NegroLeagueBatters1920to1948$HR = 1, NegroLeagueBatters1920to1948$SB = 2,
+                                                            NegroLeagueBatters1920to1948$BA = 3), selected = 1),
                                  
                                  hr(),
                                  fluidRow(column(3, verbatimTextOutput("value")))
