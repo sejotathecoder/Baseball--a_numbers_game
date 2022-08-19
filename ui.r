@@ -1,36 +1,3 @@
-library(tidyverse)
-library(plotly)
-library(fmsb)
-library(shiny)
-library(shinyWidgets)
-
-
-# Bringing hitting statistics in
-hitting <- readRDS("data/hitting.rds")
-hitting[549, 1] = "Bobby Robinson*"
-hitting[409, 1] = "Frank Duncan*"
-hitting[823, 1] = "Jack Marshall*"
-hitting[774, 1] = "Willie Wells*"
-hitting_2 <- hitting[, -1]
-rownames(hitting_2) <- hitting[, 1]
-bat_list <- filter(hitting, Player != "Max" & Player != "Min" & Player != "Average")
-
-# including pitching stats
-pitching <- readRDS("data/pitching.rds")
-pitching[349, 1] = "Roy Williams*"
-pitching[330, 1] = "Tommy Johnson*"
-pitching_2 <- pitching[, -1]
-rownames(pitching_2) <- pitching[, 1]
-just_pitching <- filter(pitching, Player != "Max" & Player != "Min" & Player != "Average")
-
-# Including hr_leaderboard statistics
-nlbat20to48 <- read_csv("data/NegroLeagueBatters1920to1948.csv")
-hr <- nlbat20to48[,c(1,2,16)]
-hr <- filter(hr, HR > 70)
-
-# Including on-base percentage / slugging interactive visualization data set & filter
-all_1920_48_qb <- read.csv("data/NegroLeagueBatters1920to1948.csv")
-all_1920_48_qb <- arrange(all_1920_48_qb, PA)
 
 home_page <- tabPanel("Home Plate",
                       mainPanel(
@@ -135,37 +102,3 @@ ui <- navbarPage("Visualizing the Negro Leagues",
                  pitching_radar_page,
                  leaderboard_page
 )
-
-server <- function(input, output){
-  
-  output$obp_slg_chart <- renderPlotly({
-    all_ops_plot_2048 <- ggplot(data = all_1920_48_qb, aes(OBP, SLG, col = PA, label = Player)) + 
-      geom_point(aes(size = PA)) + labs(x = "On-base percentage", y = "Slugging percentage", 
-                                        title = "1920 to 1948 Negro League batters, > 100 PA") 
-    all_ops_plotly_2048 <- ggplotly(all_ops_plot_2048)
-    all_ops_plotly_2048
-  })
-  
-  output$hr_summary <- renderPlot({
-    ggplot(hr, aes(x = reorder(Player, HR), y = HR)) + geom_bar(stat = "identity", width = 0.5, color = "cadetblue", 
-                                                                                  fill = "chocolate1") + theme_gray() + 
-      coord_flip() + labs(y = "Home Runs", x = "Players")
-  })
-  
-  output$hitting_plot <- renderPlot({
-    radarchart(hitting_2[c("Max", "Min", "Average", input$hitter_select), ],
-               pfcol = c("#99999980", NA),
-               pcol = c(NA, 4), plty = 1,
-               plwd = 2,
-               title = input$hitter_select)
-  })
-  
-  output$pitching_plot <- renderPlot({
-    radarchart(pitching_2[c("Max", "Min", "Average", input$pitchers), ],
-               pfcol = c("#99999980",NA),
-               pcol= c(NA,2), plty = 1, plwd = 2,
-               title = input$pitchers)
-  })
-}
-
-shinyApp(ui = ui, server = server)
