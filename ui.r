@@ -34,6 +34,9 @@ home_page <- tabPanel("Home Plate",
                       verbatimTextOutput(outputId = "summary"),
                       br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(),
                       br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(),
+                      sliderInput("minPA", "Minimum PA",
+                                  min = 100, max = 5405,
+                                  value = 500),
                       plotlyOutput(outputId = "obp_slg_chart"),
 )
 

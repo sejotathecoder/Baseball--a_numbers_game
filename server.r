@@ -1,9 +1,11 @@
 server <- function(input, output){
   
   output$obp_slg_chart <- renderPlotly({
+    all_1920_48_qb <- filter(all_1920_48_qb, PA >= input$minPA)
+    obp_slg_title <- paste("1920 to 1948 Negro League batters, >", input$minPA, "PA")
     all_ops_plot_2048 <- ggplot(data = all_1920_48_qb, aes(OBP, SLG, col = PA, label = Player)) + 
       geom_point(aes(size = PA)) + labs(x = "On-base percentage", y = "Slugging percentage", 
-                                        title = "1920 to 1948 Negro League batters, > 100 PA") 
+                                        title = obp_slg_title)
     all_ops_plotly_2048 <- ggplotly(all_ops_plot_2048)
     all_ops_plotly_2048
   })
