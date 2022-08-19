@@ -28,10 +28,18 @@ server <- function(input, output){
                title = input$hitter_select)
   })
   
+  output$hitting_table <- renderTable({
+    filter(hitting, Player == input$hitter_select)
+  })
+  
   output$pitching_plot <- renderPlot({
     radarchart(pitching_2[c("Max", "Min", "Average", input$pitchers), ],
                pfcol = c("#99999980",NA),
                pcol= c(NA,2), plty = 1, plwd = 2,
                title = input$pitchers)
+  })
+  
+  output$pitching_table <- renderTable({
+    filter(pitching, Player == input$pitchers)
   })
 }

@@ -48,7 +48,10 @@ hitting_radar_page <- tabPanel("Hitting Radar Charts",
                                  ),
                                  
                                  mainPanel(
-                                   plotOutput(outputId = "hitting_plot"),
+                                   tabsetPanel(
+                                      tabPanel("Radar Chart", plotOutput(outputId = "hitting_plot")),
+                                      tabPanel("Table", tableOutput(outputId = "hitting_table"))
+                                   ),
                                    hit_summary <- print("This radar chart is pretty straightforward. There are 4 variables shown,
                            each calculated with the raw statistic being divided by plate appearances. The variables 
                            represent the singles, doubles, triples, and home runs per plate appearance the selected 
@@ -67,7 +70,10 @@ pitching_radar_page <- tabPanel("Pitching Radar Charts",
                                                 choices = just_pitching$Player)
                                   ),
                                   mainPanel(
-                                    plotOutput(outputId = "pitching_plot"),
+                                    tabsetPanel(
+                                      tabPanel("Radar Chart", plotOutput(outputId = "pitching_plot")),
+                                      tabPanel("Table", tableOutput(outputId = "pitching_table"))
+                                    ),
                                     pitch_summary <- print("This radar chart shows three statistics (SO/9, BB/9, and HR/9). SO/9 represents the average number
                              of strikeouts the selected pitcher has per 9 innings (the higher the better). The BB/9 statistic
                              shows the average number of walks a pitcher will have per 9 innings (the lower the better), and the
