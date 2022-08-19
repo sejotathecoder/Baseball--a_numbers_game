@@ -106,6 +106,60 @@ leaderboard_page <- tabPanel("Leaderboards",
   )
 )
 
+end_page <- tabPanel("conclusion",
+                     mainPanel(
+                       h1("A summary of our project and insights of our data - based conclusions"), align = "center",
+                       
+                       end_summary <- print(" Shohei Ohtahni, Aaron Judge, Mike Trout, and other Major Leaguers such as Derek Jeter
+                                            have become household names in todays world. These are players that we know to love
+                                            and sometimes even hate; but what about players like Satchel Paige, Josh Gibson, or
+                                            Bullet 'Joe' Rogan? These Negro Leaue players were prodigys of their time; facing overwhelming
+                                            odds, they continued to stand out in their profession and display their talent time and time
+                                            again. This was the initial inspiration for Colin and I. We wanted to bring these outstanding
+                                            Negro Leaguers to the fore front of baseball achievemet using modern day statistics.
+                                            Creating visuals and analyzing & wrangling real world data in order for the reader to understand the
+                                            history of the game and its players was the priority of this project. 
+                                            
+                                              We learned many things over the course of making this shiny application. One of the main
+                                            takeaways was understanding that the data we are using is very messy, unorganized, and
+                                            contains many missing points. Learning to manipulate this data was hard and very frustuarting
+                                            at times but gave us the neccesary experience dealing with real world data. 
+                                            
+                                              Another important lesson we both learned was that the game of baseball was different back then.
+                                            These players were superstars, but proving that was the difficult part. Some ball players
+                                            during the World War 2 era didn't get many at bats, mound outings (pitching experience),
+                                            or opportunities that many athletes have today to showcase their abilities; these discrepancies
+                                            were even more prevalent for the Negro Leaguers. Again, finding ways to display what we needed to
+                                            for highliting these players was hard. When we finally solved a way to mutate data frames,
+                                            or plot charts in the appropriate manner, we learned that completing this project was possible,
+                                            it ust required many man hours and lots of creative thinking.
+                                            
+                                              Finally, we wanted to give the reader a better understanding of the game and how our
+                                            visuals worked. This proved to be quite difficult when describing baseball statistics or 
+                                            even plotting data points because we always had to think from the perspective of a reader
+                                            with no prior baseball knowledge. Highliting these players achievements while translating
+                                            their statistics into English was a learning curve for both of us but was neccesary
+                                            for the goal we were trying to accomplish.
+                                            
+                                              We created four interactive visualizations with respect to our goals of ranking these players
+                                            and being as transperent as possible with our data. The initial plot on the 'Home Plate' page
+                                            was our way of allowing the reader to review the data for themselves, accessing multiple stats
+                                            for all players in our data set. The next two visuals are radar charts for a more in-depth
+                                            look at each players abilities. Lastly, we crated an interactive bar chart that represents
+                                            the encompassing theme of our project; eliminating any bias with the players and ranking them
+                                            soley based on their statistical achievements. In every visual, you will see that players such as
+                                            Satchel Paige and Turkey Stearnes stand out just like modern day baseball
+                                            superstars. The final table that demonstrates insight for our project can be found on the 
+                                            'Leaderboard' page, where multiple calculated statistical comparisons are viewable and filterable
+                                            at the readers discrection. We want whoever is viewing our work to feel in control of the data
+                                            and make their own conclusion based on the charts, and descriptins that we have provided.
+                                            These players were amazing during their prime, Colin Putcher and Cj Piccio just made that known.
+                                            " )
+                     ),
+                     
+                     verbatimTextOutput(outputId = "end_summary"),
+)
+
 ui <- navbarPage("Visualizing the Negro Leagues",
                  tags$head(
                    tags$link(rel = "stylesheet", type = "text/css", href = "project-style.css")
@@ -116,5 +170,6 @@ ui <- navbarPage("Visualizing the Negro Leagues",
                  home_page,
                  hitting_radar_page,
                  pitching_radar_page,
-                 leaderboard_page
+                 leaderboard_page,
+                 end_page
 )
