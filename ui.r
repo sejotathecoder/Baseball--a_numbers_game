@@ -37,7 +37,7 @@ home_page <- tabPanel("Home Plate",
                       sliderInput("minPA", "Minimum PA",
                                   min = 100, max = 5405,
                                   value = 500),
-                      plotlyOutput(outputId = "obp_slg_chart"),
+                      plotlyOutput(outputId = "obp_slg_chart")
 )
 
 hitting_radar_page <- tabPanel("Hitting Radar Charts",
@@ -83,24 +83,22 @@ leaderboard_page <- tabPanel("Leaderboards",
                              titlePanel("An overview of the datasets through player ranking"),
                              sidebarLayout(
                                sidebarPanel(
-                                 selectInput("select_stat", label = h3("Choose a statistic to graph!"), 
-                                             choices = list(NegroLeagueBatters1920to1948$HR = 1, NegroLeagueBatters1920to1948$SB = 2,
-                                                            NegroLeagueBatters1920to1948$BA = 3), selected = 1),
-                                 
+                                 sliderInput("minHR", "Minimum HR",
+                                             min = 30, max = 180,
+                                             value = 70),
                                  hr(),
-                                 fluidRow(column(3, verbatimTextOutput("value")))
-                               )
-                             ),
-                             mainPanel(
-                               plotOutput(outputId = "hr_summary"),
-                               br(),
-                               hr_summary <- print("The horizontal bar chart above shows the Negro Leaguers with the most home runs.
+                               ),
+                               mainPanel(
+                                plotOutput(outputId = "hr_summary"),
+                                br(),
+                                hr_summary <- print("The horizontal bar chart above shows the Negro Leaguers with the most home runs.
                                                    This bar chart is filtered to players that have hit over 70 home runs in their
                                                    career so the data would be viewable, as many players hit at least some home runs
                                                    during their career. This bar chart was organized so that the player with the most
                                                    home runs was at the top and designed such that the bar colors would be appealing
                                                    for the reader.")
-                             )
+                              )
+  )
 )
 
 ui <- navbarPage("Visualizing the Negro Leagues",

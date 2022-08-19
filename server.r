@@ -11,6 +11,7 @@ server <- function(input, output){
   })
   
   output$hr_summary <- renderPlot({
+    hr <- filter(hr, HR >= input$minHR)
     ggplot(hr, aes(x = reorder(Player, HR), y = HR)) + geom_bar(stat = "identity", width = 0.5, color = "cadetblue", 
                                                                 fill = "chocolate1") + theme_gray() + 
       coord_flip() + labs(y = "Home Runs", x = "Players")

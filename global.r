@@ -26,7 +26,6 @@ just_pitching <- filter(pitching, Player != "Max" & Player != "Min" & Player != 
 # Including hr_leaderboard statistics
 nlbat20to48 <- read_csv("data/NegroLeagueBatters1920to1948.csv")
 hr <- nlbat20to48[,c(1,2,16)]
-hr <- filter(hr, HR > 70)
 
 # Including on-base percentage / slugging interactive visualization data set & filter
 all_1920_48_qb <- read.csv("data/NegroLeagueBatters1920to1948.csv")
