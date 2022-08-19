@@ -14,6 +14,9 @@ server <- function(input, output){
       coord_flip() + labs(y = "Home Runs", x = "Players")
   })
   
+  output$value <- renderPrint({ input$select_stat })
+  
+  
   output$hitting_plot <- renderPlot({
     radarchart(hitting_2[c("Max", "Min", "Average", input$hitter_select), ],
                pfcol = c("#99999980", NA),

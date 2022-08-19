@@ -78,6 +78,16 @@ pitching_radar_page <- tabPanel("Pitching Radar Charts",
 
 leaderboard_page <- tabPanel("Leaderboards",
                              titlePanel("An overview of the datasets through player ranking"),
+                             sidebarLayout(
+                               sidebarPanel(
+                                 selectInput("select_stat", label = h3("Choose a statistic to graph!"), 
+                                             choices = list("Choice 1" = 1, "Choice 2" = 2, "Choice 3" = 3), 
+                                             selected = 1),
+                                 
+                                 hr(),
+                                 fluidRow(column(3, verbatimTextOutput("value")))
+                               )
+                             ),
                              mainPanel(
                                plotOutput(outputId = "hr_summary"),
                                br(),
