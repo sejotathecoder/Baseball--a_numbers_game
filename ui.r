@@ -43,9 +43,28 @@ home_page <- tabPanel("Home Plate",
                               style = "background: rgba(255, 255, 255, 0.5)"
                             ),
                             mainPanel(
+                              style = "background: rgba(255, 255, 255, 0.5)",
                               plotlyOutput(outputId = "obp_slg_chart")
                             )
                           )
+                        ),
+                        br(),
+                        fluidRow(
+                          style = "background: rgba(255, 255, 255, 0.5)",
+                          p("One of the greatest baseball managers of all time, Earl Weaver of the Baltimore Orioles, 
+                          famously said \"your most precious possessions on offense are your 27 outs.\" On-base percentage 
+                          (OBP) is a useful statistic because it measures a hitter's ability to avoid an out. It is superior 
+                          to earlier statistics like batting average because it factors in a batter's ability to draw walks."),
+
+                          p("OBP was made famous by Michael Lewis's 2003 book Moneyball (later adapted into a movie), which 
+                          chronicled the 2002 Oakland Athletics and their data-driven quest to build a competitive roster with 
+                          a much lower payroll than other MLB teams. In a memorable scene from the movie, Brad Pitt, playing 
+                          general manager Billy Beane, describes why he pursues certain players to the older, less data-driven 
+                          scouts who don't understand. Over their objections to superficial factors like weight or off-field 
+                          issues, Beane simply states, \"He gets on-base.\""),
+
+                          p("Here is an interactive visual of OBP on the X-axis and slugging percentage (SLG) (essentially a 
+                          measure of power) on the Y-axis for Negro Leaguers from 1920 to 1948 with at least 100 plate appearances.")
                         )
                       )
 )
