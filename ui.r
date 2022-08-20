@@ -34,10 +34,17 @@ home_page <- tabPanel("Home Plate",
                           )
                         ),
                         fluidRow(
-                          sliderInput("minPA", "Minimum PA",
-                                      min = 100, max = 5405,
-                                      value = 500),
-                          plotlyOutput(outputId = "obp_slg_chart")
+                          sidebarLayout(
+                            sidebarPanel(
+                              sliderInput("minPA", "Minimum PA",
+                                          min = 100, max = 5405,
+                                          value = 500),
+                              style = "background: rgba(255, 255, 255, 0.5)"
+                            ),
+                            mainPanel(
+                              plotlyOutput(outputId = "obp_slg_chart")
+                            )
+                          )
                         )
                       )
 )
@@ -55,10 +62,10 @@ hitting_radar_page <- tabPanel("Hitting Radar Charts",
                                       tabPanel("Table", tableOutput(outputId = "hitting_table"))
                                    ),
                                    hit_summary <- print("This radar chart is pretty straightforward. There are 4 variables shown,
-                           each calculated with the raw statistic being divided by plate appearances. The variables 
-                           represent the singles, doubles, triples, and home runs per plate appearance the selected 
-                           hitter achieved in their career. The gray area, behind the blue-lined shape, symbolizes 
-                           the Negro League average of each calculated stat."),
+                                    each calculated with the raw statistic being divided by plate appearances. The variables 
+                                    represent the singles, doubles, triples, and home runs per plate appearance the selected 
+                                    hitter achieved in their career. The gray area, behind the blue-lined shape, symbolizes 
+                                    the Negro League average of each calculated stat."),
                                    verbatimTextOutput(outputId = "hit_summary")
                                  )
                                )
