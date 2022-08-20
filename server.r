@@ -22,10 +22,13 @@ server <- function(input, output){
   
   output$hitting_plot <- renderPlot({
     radarchart(hitting_2[c("Max", "Min", "Average", input$hitter_select), ],
+               axistype = 2,
                pfcol = c("#99999980", NA),
                pcol = c(NA, 4), plty = 1,
+               cglcol = "darkgray", axislabcol = "darkgray",
                plwd = 2,
-               title = input$hitter_select)
+               title = input$hitter_select,
+               vlabels = c("Doubles/PA", "Triples/PA             ", "Home Runs/PA", "              Singles/PA"))
   })
   
   output$hitting_table <- renderTable({
@@ -34,9 +37,12 @@ server <- function(input, output){
   
   output$pitching_plot <- renderPlot({
     radarchart(pitching_2[c("Max", "Min", "Average", input$pitchers), ],
+               axistype = 2,
                pfcol = c("#99999980",NA),
                pcol= c(NA,2), plty = 1, plwd = 2,
-               title = input$pitchers)
+               cglcol = "darkgray", axislabcol = "darkgray",
+               title = input$pitchers,
+               vlabels = c("HR/9", "BB/9", "K/9"))
   })
   
   output$pitching_table <- renderTable({

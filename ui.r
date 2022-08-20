@@ -1,43 +1,44 @@
 
 home_page <- tabPanel("Home Plate",
-                      mainPanel(
-                        h1("Can we visualize Negro League statistics for the everyday reader?"),
-                        img(src = "jackie.png"), align = "center",
-                        br(),
-                        data_summary_one <- print("The data we are using is from Baseball Reference, though it was compiled by Seamheads from
-                      newspapers and other primary sources of the time. It is important to note that the data set is not complete by any
-                      means, as box scores and record keeping were not as comprehensive in the Negro Leagues as they were for the
-                      American and National Leagues. In addition, the Negro Leagues played many exhibition, barnstorming, and other
-                      types of games that are not included in the data set. For this reason, our analysis leans toward per-game or
-                      per-plate appearance stats more than total numbers."),
-                        
-                        br(),
-                        
-                        data_summary_two <- print("Our data includes all Negro League pitchers and position players from 1920 to 1948
-                      (the period they have been designated major leagues by MLB) in the Baseball 
-                      Reference database, with the aforementioned caveats. Our data set includes 
-                      all hitters with at least 100 plate appearances (PA), and all pitchers who 
-                      appeared in at least 10 games. The data set only includes the career stats 
-                      each player put up while in the Negro Leagues (for instance, Jackie Robinson's 
-                      statistics with the Dodgers are not included in the set)."),
-                        
-                        br(),
-                        
-                        summary <- print("This project is an attempt to highlight the Negro League players, giving them the appreciation
-                                         they deserve based on their extraordinary careers.")
-                      ),
-                      
-                      verbatimTextOutput(outputId = "data_summary_one"),
-                      br(),
-                      verbatimTextOutput(outputId = "data_summary_two"),
-                      br(),
-                      verbatimTextOutput(outputId = "summary"),
-                      br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(),
-                      br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(), br(),
-                      sliderInput("minPA", "Minimum PA",
-                                  min = 100, max = 5405,
-                                  value = 500),
-                      plotlyOutput(outputId = "obp_slg_chart")
+                      fluidPage(
+                        fluidRow(
+                          titlePanel("How can we understand the accomplishments of the Negro Leaguers?"),
+                          column(4,
+                            img(src = "jackie.png")
+                          ),
+                          column(7, offset = 1,
+                            p("We both come from a background with an appreciation for the game of baseball, 
+                              and in particular, the Negro Leagues. Stories like Satchel Paige telling his 
+                              outfielders to sit down as he would strike batters out or Josh Gibson's fabled 
+                              home run in Pittsburgh that never came down help to illuminate the legend and 
+                              superhuman talents of the leagues, but spotty statistical records have long 
+                              kept the leagues just legend for many who weren't fortunate enough to see them 
+                              in real life. "),
+                            p("Following decades of research and lobbying by organizations like the Seamheads 
+                              Negro League Database, in December 2020 Major League Baseball officially designated 
+                              six Negro Leagues from 1920 to 1948 as having \"Major League\" status, elevating them 
+                              to the same status as the American and National Leagues of the same time period. 
+                              Most importantly from a data science perspective, this also meant that going forward 
+                              Negro League statistics and records from the time period would be included with 
+                              MLB statistics and not relegated to their own category. Following this decision, 
+                              in June 2021 leading online baseball almanac Baseball Reference updated its 
+                              database to include Negro League statistics, making them more accessible and more 
+                              comparable to non-Negro League statistics."),
+                            p("Negro Leagues Baseball Museum co-founder Larry Lester told the New York Times that 
+                              “The beauty of these stats is that they now humanize these folk heroes, and they’re 
+                              no longer mythical figures like Paul Bunyan or the steel-driving John Henry. These 
+                              stats legitimize their accomplishments.” Following this line of thinking, with this 
+                              project, we would like to use these statistics to further humanize and appreciate 
+                              the greatness of these players."),
+                          )
+                        ),
+                        fluidRow(
+                          sliderInput("minPA", "Minimum PA",
+                                      min = 100, max = 5405,
+                                      value = 500),
+                          plotlyOutput(outputId = "obp_slg_chart")
+                        )
+                      )
 )
 
 hitting_radar_page <- tabPanel("Hitting Radar Charts",
@@ -106,7 +107,7 @@ leaderboard_page <- tabPanel("Leaderboards",
   )
 )
 
-end_page <- tabPanel("conclusion",
+end_page <- tabPanel("Conclusion",
                      mainPanel(
                        h1("A summary of our project and insights of our data - based conclusions"), align = "center",
                        
@@ -160,6 +161,28 @@ end_page <- tabPanel("conclusion",
                      verbatimTextOutput(outputId = "end_summary"),
 )
 
+about <- tabPanel("About",
+                  fluidPage(
+                    titlePanel("About"),
+                    
+                    p("The data we are using is from Baseball Reference, though it was compiled by 
+                              Seamheads from newspapers and other primary sources of the time. It is important 
+                              to note that the data set is not complete by any means, as box scores and record 
+                              keeping were not as comprehensive in the Negro Leagues as they were for the 
+                              American and National Leagues. In addition, the Negro Leagues played many 
+                              exhibition, barnstorming, and other types of games that are not included in the 
+                              data set. For this reason, our analysis leans toward per-game or per-plate 
+                              appearance stats more than total numbers."),
+                    p("Our data includes all Negro League pitchers and position players from 1920 to 
+                              1948 (the period they have been designated major leagues by MLB) in the Baseball 
+                              Reference database, with the aforementioned caveats. Our data set includes all 
+                              hitters with at least 100 plate appearances (PA), and all pitchers who appeared 
+                              in at least 10 games. The data set only includes the career stats each player 
+                              put up while in the Negro Leagues (for instance, Jackie Robinson's statistics 
+                              with the Dodgers are not included in the set). "),
+                  )
+)
+
 ui <- navbarPage("Visualizing the Negro Leagues",
                  tags$head(
                    tags$link(rel = "stylesheet", type = "text/css", href = "project-style.css")
@@ -171,5 +194,6 @@ ui <- navbarPage("Visualizing the Negro Leagues",
                  hitting_radar_page,
                  pitching_radar_page,
                  leaderboard_page,
-                 end_page
+                 end_page,
+                 about
 )
