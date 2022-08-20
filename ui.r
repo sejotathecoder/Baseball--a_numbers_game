@@ -33,6 +33,7 @@ home_page <- tabPanel("Home Plate",
                               the greatness of these players.", style = "color:black; opacity: 1")
                           )
                         ),
+                        br(),
                         fluidRow(
                           sidebarLayout(
                             sidebarPanel(
@@ -52,15 +53,21 @@ home_page <- tabPanel("Home Plate",
 hitting_radar_page <- tabPanel("Hitting Radar Charts",
                                titlePanel("Negro League Hitters: Radar Chart"),
                                sidebarLayout(
-                                 sidebarPanel(selectInput("hitter_select", label = h3("Select a hitter"),
+                                 
+                                 sidebarPanel(
+                                   style = "background: rgba(255, 255, 255, 0.5)",
+                                   selectInput("hitter_select", label = h3("Select a hitter"),
                                                           choices = bat_list)
                                  ),
                                  
                                  mainPanel(
+                                   style = "background: rgba(255, 255, 255, 0.5)",
                                    tabsetPanel(
                                       tabPanel("Radar Chart", plotOutput(outputId = "hitting_plot")),
                                       tabPanel("Table", tableOutput(outputId = "hitting_table"))
                                    ),
+                                   p(em("Suggested players to view: Josh Gibson, Oscar Charleston, Bullet Rogan, 
+                                        Turkey Stearnes, Willard Brown, Mule Suttles")),
                                    hit_summary <- print("This radar chart is pretty straightforward. There are 4 variables shown,
                                     each calculated with the raw statistic being divided by plate appearances. The variables 
                                     represent the singles, doubles, triples, and home runs per plate appearance the selected 
@@ -74,15 +81,20 @@ hitting_radar_page <- tabPanel("Hitting Radar Charts",
 pitching_radar_page <- tabPanel("Pitching Radar Charts",
                                 titlePanel("Negro League Pitchers: Radar Chart"),
                                 sidebarLayout(
+                                  
                                   sidebarPanel(
+                                    style = "background: rgba(255, 255, 255, 0.5)",
                                     selectInput("pitchers", label = h3("Select a pitcher"), 
-                                                choices = just_pitching$Player)
+                                                choices = just_pitching$Player, selected = "Satchel Paige")
                                   ),
                                   mainPanel(
+                                    style = "background: rgba(255, 255, 255, 0.5)",
                                     tabsetPanel(
                                       tabPanel("Radar Chart", plotOutput(outputId = "pitching_plot")),
                                       tabPanel("Table", tableOutput(outputId = "pitching_table"))
                                     ),
+                                    p(em("Suggested players to view: Satchel Paige, Bill Foster, Bullet Rogan, 
+                                         Ray Brown, Hilton Smith")),
                                     pitch_summary <- print("This radar chart shows three statistics (SO/9, BB/9, and HR/9). SO/9 represents the average number
                              of strikeouts the selected pitcher has per 9 innings (the higher the better). The BB/9 statistic
                              shows the average number of walks a pitcher will have per 9 innings (the lower the better), and the
@@ -97,13 +109,16 @@ pitching_radar_page <- tabPanel("Pitching Radar Charts",
 leaderboard_page <- tabPanel("Leaderboards",
                              titlePanel("An overview of the datasets through player ranking"),
                              sidebarLayout(
+                               
                                sidebarPanel(
                                  sliderInput("minHR", "Minimum HR",
                                              min = 30, max = 180,
                                              value = 70),
                                  hr(),
+                                 style = "background: rgba(255, 255, 255, 0.5)",
                                ),
                                mainPanel(
+                                style = "background: rgba(255, 255, 255, 0.5)",
                                 plotOutput(outputId = "hr_summary"),
                                 br(),
                                 hr_summary <- print("The interactive horizontal bar chart above shows the Negro Leaguers with the
