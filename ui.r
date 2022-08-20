@@ -171,6 +171,7 @@ end_page <- tabPanel("Conclusion",
 
 about <- tabPanel("About",
                   fluidPage(
+                    style = "background: rgba(255, 255, 255, 0.5)",
                     titlePanel("About"),
                     
                     p("The data we are using is from Baseball Reference, though it was compiled by 
