@@ -132,7 +132,8 @@ leaderboard_page <- tabPanel("Leaderboards",
 
 end_page <- tabPanel("Conclusion",
                      mainPanel(
-                       h1("A summary of our project and insights of our data - based conclusions"), align = "center",
+                       style = "background: rgba(255, 255, 255, 0.5)",
+                       h1("A summary of our project and insights of our data - based conclusions"),
                        
                        end_summary <- print("Shohei Ohtani, Aaron Judge, Mike Trout, and other Major Leaguers such as Derek Jeter 
                                             have become household names in today’s world. These are players that we know to love 
