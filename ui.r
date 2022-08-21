@@ -150,54 +150,49 @@ leaderboard_page <- tabPanel("Leaderboards",
 )
 
 end_page <- tabPanel("Conclusion",
-                     mainPanel(
+                     fluidPage(
                        style = "background: rgba(255, 255, 255, 0.5)",
-                       h1("A summary of our project and insights of our data - based conclusions"),
+                       titlePanel("A summary of our project and insights of our data-based conclusions"),
                        
-                       end_summary <- print("Shohei Ohtani, Aaron Judge, Mike Trout, and other Major Leaguers such as Derek Jeter 
-                                            have become household names in today’s world. These are players that we know to love 
-                                            and sometimes even hate; but what about players like Satchel Paige, Josh Gibson, or 
-                                            Bullet 'Joe' Rogan? These Negro League players were prodigies of their time; facing 
-                                            overwhelming odds, they continued to stand out in their profession and display their 
-                                            talent time and time again. This was the initial inspiration for us. We wanted to bring 
-                                            these outstanding Negro Leaguers to the forefront of baseball achievement using modern 
-                                            day statistics. Creating visuals and analyzing & wrangling real world data in order for 
-                                            the reader to understand the history of the game and its players was the priority of this 
-                                            project. We learned many things over the course of making this shiny application. One of 
-                                            the main takeaways was understanding that the data we are using is very messy, 
-                                            unorganized, and contains many missing points. Learning to manipulate this data was hard 
-                                            and very frustrating at times but gave us the necessary experience dealing with real 
-                                            world data. Another important lesson we both learned was that the game of baseball was 
-                                            different back then. These players were superstars but proving that was the difficult 
-                                            part. Some ball players during the World War 2 era didn't get many at bats, mound 
-                                            outings (pitching experience), or opportunities that many athletes have today to 
-                                            showcase their abilities; these discrepancies were even more prevalent for the Negro 
-                                            Leaguers. Again, finding ways to display what we needed to for highlighting these 
-                                            players was hard. When we finally solved a way to mutate data frames, or plot charts in 
-                                            the appropriate manner, we learned that completing this project was possible, it just 
-                                            required many man hours and lots of creative thinking. Finally, we wanted to give the 
-                                            reader a better understanding of the game and how our visuals worked. This proved to be 
-                                            quite difficult when describing baseball statistics or even plotting data points because 
-                                            we always had to think from the perspective of a reader with no prior baseball knowledge. 
-                                            Highlighting these players achievements while translating their statistics into English 
-                                            was a learning curve for both of us but was necessary for the goal we were trying to 
-                                            accomplish. We created four interactive visualizations with respect to our goals of 
-                                            ranking these players and being as transparent as possible with our data. The initial 
-                                            plot on the 'Home Plate' page was our way of allowing the reader to review the data for 
-                                            themselves, accessing multiple stats for all players in our data set. The next two visuals 
-                                            are radar charts for a more in-depth look at each players’ abilities. Lastly, we created 
-                                            an interactive bar chart that represents the encompassing theme of our project; eliminating 
-                                            any bias with the players and ranking them solely based on their statistical achievements. 
-                                            In every visual, you will see that players such as Satchel Paige and Turkey Stearnes stand 
-                                            out just like modern day baseball superstars. The final table that demonstrates insight for 
-                                            our project can be found on the 'Leaderboard' page, where multiple calculated statistical 
-                                            comparisons are viewable and filterable at the readers discretion. We want whoever is 
-                                            viewing our work to feel in control of the data and make their own conclusion based on the 
-                                            charts, and descriptions that we have provided. These players were amazing during their 
-                                            prime, we have just made that easier to see." )
-                     ),
-                     
-                     verbatimTextOutput(outputId = "end_summary"),
+                       p("With today’s baseball stars like Shohei Ohtani, Aaron Judge, Julio Rodriguez, 
+                       Mike Trout, and others, one does not need to look far to understand their 
+                       greatness. One can watch their games on television, their highlights on 
+                       YouTube, or even dive deeper into their statistics on Baseball Reference or 
+                       Baseball Savant. For the Negro Leaguers, much of that does not exist. The 
+                       legends and stories have lived on, but very little video exists. Although 
+                       they are incomplete, we are fortunate enough to now have some of the 
+                       statistics from the Negro Leaguers, and we are able to bring their 
+                       accomplishments from folk heroics to human achievement, to paraphrase 
+                       Negro Leagues Baseball Museum co-founder Larry Lester."),
+                       
+                       p("One man whose accomplishments immediately jump out is two-way star Bullet 
+                       Rogan. Rogan’s legend was so great that many referred to Babe Ruth as “the 
+                       white Bullet Rogan”. As a hitter, Rogan tallied 2,376 plate appearances (PA) 
+                       in our dataset, with an on-base percentage of .413, higher than Hall of Famers 
+                       like Cool Papa Bell and Willie Wells. As a pitcher, Rogan had 5.5 strikeouts per 
+                       nine innings (K/9), the same as Hall of Famer Bill Foster. Rogan even showed more 
+                       control than Foster, with only 2.4 walks per nine innings (BB/9) to Foster’s 2.9. 
+                       No other player showcased as much power on both the mound and at the plate, making 
+                       Rogan a rarity throughout baseball history."),
+                         
+                       p("Our dataset also allows one to better appreciate a player like Turkey Stearnes, 
+                       the leader in home runs with over 170. This was not merely a product of volume, as 
+                       his home runs per plate appearance (HR/PA) of 0.04, placing him in the top five of 
+                       all players in the data set. His volume is still impressive though, as with 4,291 
+                       plate appearances, only Cool Papa Bell and Willie Wells had more."),
+                         
+                       p("Lastly, it is also interesting to examine the brief Negro League careers of 
+                       some players who played at the tail-end of our dataset’s period of 1920 to 1948. 
+                       Jackie Robinson only logged 137 plate appearances in our dataset, but he showed 
+                       glimpses of the Hall of Famer he would become with the Brooklyn Dodgers, with an 
+                       impressive on-base percentage of .449. His 0.09 doubles per plate appearance were 
+                       more than double the average hitter in the dataset."),
+                         
+                       p("We have just laid out a few here, but there are many more insights one can 
+                       glean from the tools we have created. Our intention was to create tools that 
+                       could allow one to better grasp the accomplishments of the Negro Leaguers, and we 
+                       hope we have done that.")
+                       )
 )
 
 about <- tabPanel("About",
